@@ -1,0 +1,281 @@
+/* /css/style.css */
+
+/* 1. PALETA DE CORES E VARIÁVEIS GLOBAIS */
+:root {
+    /* Modo Claro (Padrão) */
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --body-bg: #f2f5f8;
+    --component-bg: #ffffff;
+    --border-color: #e9ecef;
+    --text-dark: #212529;
+    --text-light: #6c757d;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --transition-speed: 0.3s;
+}
+
+/* 2. MODO ESCURO (Dark Mode) */
+html.dark-mode {
+    --primary-color: #4dabf7;
+    --primary-hover: #74c0fc;
+    --body-bg: #121212;
+    --component-bg: #1e1e1e;
+    --border-color: #343a40;
+    --text-dark: #f8f9fa;
+    --text-light: #adb5bd;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--text-dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* 3. ESTRUTURA E LAYOUT */
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    background-color: var(--component-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    transition: background-color var(--transition-speed);
+}
+
+.screen {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 100px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--component-bg);
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+.page-header h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+.content-padding {
+    padding: 1rem 1.5rem;
+}
+
+/* NOVO: Botão de ícone no header */
+.header-icon-btn {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+.header-icon-btn:hover {
+    color: var(--primary-color);
+}
+
+
+/* 4. COMPONENTES INTERATIVOS */
+.bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    background-color: var(--component-bg);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.nav-link {
+    flex: 1;
+    text-align: center;
+    padding: 12px 5px;
+    cursor: pointer;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+}
+.nav-link i { font-size: 1.6rem; display: block; margin-bottom: 4px; }
+.nav-link span { font-size: 0.7rem; font-weight: 500; }
+.nav-link.active, .nav-link:hover { color: var(--primary-color); transform: translateY(-2px); }
+
+.btn-fab {
+    position: fixed;
+    bottom: 85px;
+    right: calc(50% - 210px);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-speed) ease;
+    z-index: 999;
+}
+.btn-fab:hover { background-color: var(--primary-hover); transform: scale(1.05) rotate(15deg); }
+
+.btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color var(--transition-speed) ease; }
+.btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
+
+/* 5. ESTILOS DAS TELAS */
+
+/* LOGIN */
+#auth-screen .auth-header {
+    background: linear-gradient(135deg, var(--primary-color), #004aad);
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.auth-page { display: none; }
+.auth-page.active { display: flex; flex-direction: column; height: 100%; }
+
+/* HOME */
+.menu-card {
+    background: var(--component-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-dark);
+    display: block;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+.menu-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.menu-card i { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.menu-card .card-title { font-weight: 600; font-size: 1.1rem; }
+.menu-card .card-summary { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+
+/* ESTADO VAZIO PARA LISTAS */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 2rem;
+    background-color: var(--body-bg);
+    border-radius: var(--border-radius-lg);
+    transition: background-color var(--transition-speed);
+}
+.empty-state i { font-size: 3rem; color: var(--border-color); transition: color var(--transition-speed); }
+.empty-state p { margin-top: 1rem; color: var(--text-light); font-weight: 500; transition: color var(--transition-speed); }
+
+/* ESTOQUE E LISTA - ITENS */
+.list-group-item {
+    border-radius: var(--border-radius-md) !important;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    background-color: var(--component-bg);
+    transition: all var(--transition-speed) ease;
+}
+.low-stock { border-left: 4px solid var(--warning-color); }
+.low-stock .item-quantity::after { content: ' (baixo)'; font-weight: bold; color: var(--warning-color); font-size: 0.8rem; margin-left: 5px; }
+.item-purchased { opacity: 0.6; }
+.item-purchased .item-name { text-decoration: line-through; }
+
+/* GASTOS - SELETOR DE MÊS */
+.month-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 1.5rem;
+}
+.month-selector .btn { font-size: 1.5rem; line-height: 1; color: var(--text-dark); }
+.month-selector #current-month-display { font-size: 1.1rem; font-weight: 600; }
+
+.expense-card { display: flex; align-items: center; padding: 1rem; border-radius: var(--border-radius-md); background: var(--component-bg); box-shadow: var(--shadow-sm); margin-bottom: 0.75rem; border: 1px solid var(--border-color); }
+.expense-card .icon { font-size: 1.5rem; margin-right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: var(--light-bg); }
+.expense-card .details { flex-grow: 1; }
+.expense-card .amount { font-weight: 600; }
+.expense-card .actions .btn { padding: 0.2rem 0.5rem; }
+
+.expense-summary-card { background: linear-gradient(135deg, var(--primary-color), #004aad); color: #fff; padding: 1.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); }
+.bar-graph { height: 10px; background-color: rgba(255,255,255,0.2); border-radius: 5px; overflow: hidden; }
+.bar-graph .bar { height: 100%; background-color: var(--info-color); border-radius: 5px; transition: width var(--transition-speed) ease; }
+
+/* 6. PÁGINA DE CONFIGURAÇÕES */
+.settings-group { margin-bottom: 2rem; }
+.settings-group .group-title { font-size: 0.9rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; margin-bottom: 0.75rem; padding-left: 0.5rem; }
+.settings-item { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background-color: var(--component-bg); border-radius: var(--border-radius-md); margin-bottom: 0.5rem; border: 1px solid var(--border-color); transition: all var(--transition-speed); }
+.settings-item:hover { background-color: var(--body-bg); border-color: var(--primary-color); }
+.settings-item .icon { font-size: 1.2rem; color: var(--text-light); margin-right: 1rem; }
+.settings-item .label { flex-grow: 1; font-weight: 500; }
+
+.form-switch .form-check-input { width: 3.5em; height: 1.75em; cursor: pointer; background-color: var(--border-color); border-color: var(--border-color); }
+.form-switch .form-check-input:checked { background-color: var(--primary-color); border-color: var(--primary-color); }
+.form-switch .form-check-input, .btn-check + .btn { transition: all var(--transition-speed); }
+
+.profile-header { text-align: center; padding: 2rem 1rem; }
+.profile-header .avatar { width: 80px; height: 80px; border-radius: 50%; background-color: var(--primary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 600; margin: 0 auto 1rem auto; box-shadow: var(--shadow-md); }
+.profile-header .username { font-size: 1.5rem; font-weight: 700; }
+.profile-header .email { color: var(--text-light); }
+
+/* 7. NOTIFICAÇÃO "TOAST" */
+.toast-notification {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    color: #fff;
+    background-color: var(--text-dark);
+    box-shadow: var(--shadow-md);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+.toast-notification.show { opacity: 1; bottom: 100px; }
+.toast-notification.success { background-color: var(--success-color); }
+.toast-notification.error { background-color: var(--danger-color); }
+.toast-notification.info { background-color: var(--secondary-color); }
+
+/* DRAG & DROP (SortableJS) */
+.sortable-ghost { opacity: 0.4; background: #c8ebfb; }
+
+/* Outros ajustes */
+.modal-content { background-color: var(--component-bg); transition: background-color var(--transition-speed); }
+.modal-header, .modal-footer { border-color: var(--border-color); transition: border-color var(--transition-speed); }
+.form-control, .form-select { background-color: var(--component-bg); color: var(--text-dark); border-color: var(--border-color); }
+.form-control:focus, .form-select:focus { background-color: var(--component-bg); color: var(--text-dark); border-color: var(--primary-color); box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb, 13, 110, 253), .25); }
+
+html.dark-mode .form-control::placeholder { color: var(--text-light); }
+html.dark-mode .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+html.dark-mode .btn-check + .btn-outline-primary { color: var(--primary-color); border-color: var(--primary-color); }
+html.dark-mode .btn-check:checked + .btn-outline-primary { background-color: var(--primary-color); color: #000; }

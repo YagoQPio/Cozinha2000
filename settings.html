@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Sistema Inteligente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <section id="settings-screen" class="screen">
+            <div class="page-header">
+                <a href="home.html" class="header-icon-btn"><i class="bi bi-arrow-left"></i></a>
+                <h4>Configurações</h4>
+                <div style="width: 24px;"></div> <!-- Espaçador para centralizar o título -->
+            </div>
+            
+            <div class="profile-header">
+                <div class="avatar">U</div>
+                <div class="username">Usuário Padrão</div>
+                <div class="email">user@email.com</div>
+            </div>
+
+            <div class="content-padding">
+                <div class="settings-group">
+                    <div class="group-title">Aparência</div>
+                    <div class="settings-item">
+                        <div class="icon"><i class="bi bi-palette-fill"></i></div>
+                        <div class="label">Tema</div>
+                        <div class="btn-group" role="group">
+                            <input type="radio" class="btn-check" name="theme" id="theme-light" onchange="changeTheme('light')">
+                            <label class="btn btn-outline-primary" for="theme-light"><i class="bi bi-sun-fill"></i></label>
+
+                            <input type="radio" class="btn-check" name="theme" id="theme-dark" onchange="changeTheme('dark')">
+                            <label class="btn btn-outline-primary" for="theme-dark"><i class="bi bi-moon-stars-fill"></i></label>
+
+                            <input type="radio" class="btn-check" name="theme" id="theme-system" onchange="changeTheme('system')">
+                            <label class="btn btn-outline-primary" for="theme-system"><i class="bi bi-display-fill"></i></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="group-title">Notificações</div>
+                    <div class="settings-item">
+                        <div class="icon"><i class="bi bi-box-seam"></i></div>
+                        <div class="label">Aviso de estoque baixo</div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="notification-low-stock" onchange="toggleNotification('lowStock')">
+                        </div>
+                    </div>
+                    <div class="settings-item">
+                        <div class="icon"><i class="bi bi-lightbulb"></i></div>
+                        <div class="label">Sugestões de receitas</div>
+                         <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="notification-suggestions" onchange="toggleNotification('recipeSuggestions')">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="group-title">Dados</div>
+                    <div class="settings-item" onclick="exportData()" style="cursor: pointer;">
+                        <div class="icon"><i class="bi bi-download"></i></div>
+                        <div class="label">Exportar meus dados</div>
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                    <div class="settings-item" onclick="clearCache()" style="cursor: pointer;">
+                        <div class="icon text-danger"><i class="bi bi-trash-fill"></i></div>
+                        <div class="label text-danger">Limpar dados do app</div>
+                         <i class="bi bi-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
